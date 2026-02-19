@@ -93,9 +93,3 @@ Visit `http://localhost:5000` in your browser.
 - `data/`: Analysis results (excluded from Git).
 
 ---
-
-## ⚖️ License
-MIT License - see [LICENSE](LICENSE) for details.
-
----
-**Built for the next generation of data-driven investors. 🚀**
