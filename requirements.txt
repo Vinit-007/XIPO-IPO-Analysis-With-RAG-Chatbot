@@ -1,0 +1,40 @@
+# ============================================
+# IPO Analyser - Requirements
+# ============================================
+
+# Core Web Framework
+flask==3.0.0
+flask-cors==4.0.0
+
+# PDF Processing
+PyMuPDF==1.23.8
+pdfplumber==0.10.3
+
+# Web Scraping & HTTP
+requests==2.31.0
+beautifulsoup4==4.12.2
+
+# AI & LLM Integration
+sentence-transformers==2.2.2
+faiss-cpu==1.7.4
+tiktoken==0.5.2
+
+# Data Processing & Analysis
+pandas==2.1.4
+numpy==1.26.2
+scikit-learn==1.3.2
+scipy==1.11.4
+
+# Visualization
+plotly==5.18.0
+
+# Environment & Configuration
+python-dotenv==1.0.0
+
+# ============================================
+# Optional Dependencies (for development)
+# ============================================
+# Uncomment if needed:
+# pytest==7.4.3
+# black==23.12.1
+# flake8==6.1.0

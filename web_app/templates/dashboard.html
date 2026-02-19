@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinCore | AI Investment Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+</head>
+
+<body>
+
+
+    <!-- MAIN DASHBOARD CONTAINER -->
+    <div class="container dashboard-grid">
+
+        <!-- Status Bar (Moved from Verdict) -->
+        <div style="text-align: center; margin-bottom: 1rem;">
+            <span id="metrics-status" class="ticker-item" style="color:var(--primary); font-weight:bold;">Status:
+                IDLE</span>
+        </div>
+
+        <!-- ROW 2: CORE ANALYSIS (Split 2:1) -->
+        <section class="analysis-row">
+
+            <!-- Left: Context & Overview -->
+            <div class="fin-card">
+                <h3>IPO Overview & Analysis</h3>
+
+                <!-- This container usually holds the markdown report. 
+                     We will style the markdown content to fit the card. -->
+                <div id="report-container" class="markdown-content"
+                    style="overflow-y: auto; flex: 1; padding-right: 0.5rem; max-height: 500px;">
+                    <div style="text-align: center; color: var(--text-muted); margin-top: 4rem;">
+                        Waiting for analysis...
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Right: Financial Health -->
+            <div id="health-card" class="fin-card" style="display: none;">
+                <h3>Financial Health Score <span class="text-primary" style="font-size:0.7rem;">AI GENERATED</span></h3>
+
+                <div class="health-guage-container">
+                    <div class="score-circle">
+                        <div class="score-inner">
+                            <span id="health-score-val" class="score-val">--</span>
+                            <span class="score-label">Percentile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="health-context">
+                    <div class="data-point" style="margin-bottom:0.5rem;">
+                        <label>Ranking</label>
+                        <span id="health-ranking-text" class="text-success">--</span>
+                    </div>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">Score derived from Growth, Stability, Margins, and
+                        Efficiency.</p>
+                </div>
+
+                <!-- Hidden fields for JS to populate if needed for debug -->
+                <div style="display:none;">
+                    <div id="health-growth"></div>
+                    <div id="health-stability"></div>
+                    <div id="health-margins"></div>
+                    <div id="health-efficiency"></div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ROW 3: VISUAL STORYTELLING (Hidden) -->
+        <section class="charts-row full-width" style="display:none;">
+            <div class="fin-card" style="background: transparent; border: none; box-shadow: none; padding: 0;">
+                <h3 style="margin-bottom: 1rem; padding-left: 0.5rem;">Financial Performance Snapshot</h3>
+                <div id="charts-container" class="charts-grid">
+                    <!-- Charts injected here -->
+                    <!-- Placeholders to maintain grid before load -->
+                    <div class="chart-wrapper"></div>
+                    <div class="chart-wrapper"></div>
+                    <div class="chart-wrapper"></div>
+                    <div class="chart-wrapper"></div>
+                    <div class="chart-wrapper"></div>
+                    <div class="chart-wrapper"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROW 4: PULSE & INTERACTION -->
+        <section class="bottom-row">
+
+            <!-- News Intelligence -->
+            <div id="news-section-card" class="fin-card">
+                <h3>
+                    <div>Market Sentiment & News</div>
+                    <div id="sentiment-badge" class="verdict-confidence" style="font-size: 0.7rem;">NEUTRAL</div>
+                </h3>
+
+                <div style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <div class="data-point">
+                        <label>Impact Score</label>
+                        <span id="sentiment-score" class="text-primary">--</span><span
+                            style="font-size:0.8rem; color:var(--text-muted)">/10</span>
+                    </div>
+                </div>
+
+                <div id="news-narrative"
+                    style="font-style: italic; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; padding-left: 10px; border-left: 2px solid var(--primary);">
+                    Scanning news sources...
+                </div>
+
+                <div id="latest-news-container">
+                    <!-- News Items -->
+                </div>
+
+                <!-- Driving factors hidden list for JS compatibility -->
+                <ul id="news-drivers" style="display:none;"></ul>
+            </div>
+
+            <!-- RAG Chatbot -->
+            <div class="fin-card">
+                <h3>FinCore Analyst (AI Agent)</h3>
+
+                <div id="chat-history" class="chat-window">
+                    <div class="msg bot">
+                        I have analyzed the RHP, Financials, and Risk Factors. Ask me anything about this IPO.
+                    </div>
+                </div>
+
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chat-input" class="chat-input"
+                        placeholder="e.g. 'What are the top 3 risk factors?'" disabled>
+                    <button id="send-btn" class="btn-glow" onclick="sendMessage()" disabled>Ask</button>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Hidden elements for JS compatibility -->
+    <div id="terminal" style="display:none;"></div>
+
+    <script src="{{ url_for('static', filename='js/translator.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

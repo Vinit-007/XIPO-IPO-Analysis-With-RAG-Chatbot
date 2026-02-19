@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XIPO - Master the Unlisted</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Spline Viewer -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.59/build/spline-viewer.js"></script>
+</head>
+
+<body class="bg-[#020202] text-white flex flex-col relative overflow-hidden font-sans cursor-none">
+
+    <!-- Cursor Canvas -->
+    <canvas id="cursor-trail" class="fixed inset-0 pointer-events-none z-[9999]"></canvas>
+
+    <!-- Floating Header -->
+    <header
+        class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl h-16 flex items-center justify-between px-8 z-50 glass rounded-2xl border-white/5 shadow-2xl">
+        <div class="flex items-center gap-3">
+            <div
+                class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center font-bold text-lg shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                X
+            </div>
+            <div class="flex flex-col">
+                <h1 class="text-lg font-bold tracking-tighter leading-none">XIPO</h1>
+                <span class="text-[9px] text-blue-400 uppercase tracking-[0.2em] font-medium">Explaining IPOs</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="hidden md:flex gap-6 text-[11px] font-bold uppercase tracking-widest text-white/40">
+                <a href="/dashboard" class="hover:text-blue-400 transition-colors cursor-pointer">Live Data</a>
+                <span class="hover:text-blue-400 transition-colors cursor-pointer">Filings</span>
+                <span class="hover:text-blue-400 transition-colors cursor-pointer">Analytics</span>
+            </div>
+            <div class="h-6 w-[1px] bg-white/10 hidden md:block"></div>
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-[10px] font-mono text-white/50 uppercase">Network Active</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Experience Layer -->
+    <main class="flex-1 relative flex flex-col items-center justify-center min-h-screen">
+
+        <!-- Background Ambient Glows -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none">
+        </div>
+
+        <!-- The 3D Focus -->
+        <div class="w-full h-full absolute inset-0 z-0">
+            <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                class="w-full h-full scale-110 md:scale-100"></spline-viewer>
+        </div>
+
+        <!-- Content Overlay -->
+        <div class="relative z-10 w-full max-w-4xl px-8 flex flex-col items-center gap-12 pointer-events-none">
+
+            <!-- Hero Text -->
+            <div class="text-center space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                <h2 class="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
+                    MASTER THE <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">UNLISTED.</span>
+                </h2>
+                <p class="text-white/30 text-sm md:text-lg tracking-widest uppercase font-medium">
+                    Deep intelligence on upcoming initial offerings
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Futuristic Command Bar -->
+    <footer class="fixed bottom-12 left-1/2 -translate-x-1/2 w-full max-w-2xl px-6 z-50">
+        <form id="search-form" class="group relative pointer-events-auto">
+            <!-- Neon Border Glow -->
+            <div
+                class="absolute -inset-[1px] bg-gradient-to-r from-blue-600/50 via-indigo-600/50 to-blue-600/50 rounded-2xl blur-sm opacity-20 group-focus-within:opacity-100 transition duration-700">
+            </div>
+
+            <div
+                class="relative flex items-center bg-black/80 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-3xl">
+                <div class="pl-6 text-white/20">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <input type="text" id="search-input" placeholder="Search company or ticker..."
+                    class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-6 text-lg outline-none placeholder:text-white/10 font-medium tracking-tight text-white" />
+                <div class="pr-4">
+                    <button type="submit" id="submit-btn"
+                        class="flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-300 bg-white text-black hover:bg-blue-500 hover:text-white active:scale-95 shadow-xl disabled:bg-white/5 disabled:text-white/20">
+                        <div id="loading-icon"
+                            class="hidden w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin">
+                        </div>
+                        <svg id="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="19" x2="12" y2="5"></line>
+                            <polyline points="5 12 12 5 19 12"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Shortcuts -->
+            <div class="flex justify-center gap-4 mt-4 text-[10px] font-bold uppercase tracking-widest text-white/20">
+                <span
+                    class="quick-link hover:text-blue-400 cursor-pointer transition-colors px-2 py-1 bg-white/5 rounded-md hover:bg-white/10"
+                    data-term="Meesho">Meesho</span>
+                <span
+                    class="quick-link hover:text-blue-400 cursor-pointer transition-colors px-2 py-1 bg-white/5 rounded-md hover:bg-white/10"
+                    data-term="Swiggy">Swiggy</span>
+                <span
+                    class="quick-link hover:text-blue-400 cursor-pointer transition-colors px-2 py-1 bg-white/5 rounded-md hover:bg-white/10"
+                    data-term="NTPC Green">NTPC Green</span>
+            </div>
+        </form>
+    </footer>
+
+    <!-- Decorative Grid Overlay -->
+    <div
+        class="fixed inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]">
+    </div>
+
+    <script src="{{ url_for('static', filename='js/landing.js') }}"></script>
+</body>
+
+</html>
