@@ -1,4 +1,4 @@
-# 🚀 XIPO - Explainable IPOs
+#  XIPO - Explainable IPOs
 
 **XIPO** is an end-to-end AI-powered pipeline that automates due diligence for upcoming IPOs. It eliminates the 4-8 hours of manual research by automating the discovery, extraction, and analysis of Prospectus filings.
 
@@ -6,7 +6,7 @@ XIPO combines **deterministic rule-based agents** for 100% financial accuracy wi
 
 ---
 
-## 💡 Why XIPO? (The "Why Not ChatGPT?" Analysis)
+##  Why XIPO? (The "Why Not ChatGPT?" Analysis)
 
 While ChatGPT is powerful, it has fundamental limitations for financial due diligence:
 
@@ -20,20 +20,20 @@ While ChatGPT is powerful, it has fundamental limitations for financial due dili
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
-- 🌐 **Automated Scraper**: Automatically finds and downloads the latest filings from official regulatory databases.
-- 📊 **Metric Extraction**: Regex-based extraction of Revenue, PAT, EBITDA, EPS, and 15+ other key indicators.
-- 💬 **RAG Chatbot**: "Chat with the Prospectus" using FAISS vector search with exact page citations.
-- 📝 **Investment Memo**: Multi-stage Map-Reduce pipeline (Llama 3.3-70b via Cerebras) for institutional-grade reports.
-- 📈 **Visual Analytics**: Interactive Plotly financial visualizations (Revenue, PAT, Margins, etc.).
-- 📰 **Sentiment Engine Engine**: Sentiment analysis of the latest news articles with LLM-powered semantic nuance.
+-  **Automated Scraper**: Automatically finds and downloads the latest filings from official regulatory databases.
+-  **Metric Extraction**: Regex-based extraction of Revenue, PAT, EBITDA, EPS, and 15+ other key indicators.
+-  **RAG Chatbot**: "Chat with the Prospectus" using FAISS vector search with exact page citations.
+-  **Investment Memo**: Multi-stage Map-Reduce pipeline (Llama 3.3-70b via Cerebras) for institutional-grade reports.
+-  **Visual Analytics**: Interactive Plotly financial visualizations (Revenue, PAT, Margins, etc.).
+-  **Sentiment Engine Engine**: Sentiment analysis of the latest news articles with LLM-powered semantic nuance.
 
 ---
 
-## 🏗️ Architecture & Pipeline Stages
+##  Architecture & Pipeline Stages
 
-### ⚙️ The 11-Stage Pipeline
+###  The 11-Stage Pipeline
 1. **Discovery**: Scrapes regulatory databases for the latest company filings.
 2. **Extraction**: Dual-library approach (PyMuPDF for text, pdfplumber for tables).
 3. **Indexing**: FAISS-based vector storage for RAG (Retrieval-Augmented Generation).
@@ -45,7 +45,7 @@ While ChatGPT is powerful, it has fundamental limitations for financial due dili
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Backend**: Python 3.10+, Flask
 - **PDF Core**: PyMuPDF, pdfplumber
@@ -56,7 +56,7 @@ While ChatGPT is powerful, it has fundamental limitations for financial due dili
 
 ---
 
-## 🏁 Quick Start
+##  Quick Start
 
 ### 1. Prerequisites
 - Python 3.10+
@@ -84,7 +84,7 @@ Visit `http://localhost:5000` in your browser.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 - `backend/agents/`: Python-based analysis agents (Financial, Risk, Map-Reduce).
 - `backend/tools/`: Extraction and scraping utilities.
